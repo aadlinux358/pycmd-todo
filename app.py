@@ -26,7 +26,6 @@ from python_todo.models import PasswordChange, TodoCreate, TodoRead, TodoStat, T
 from python_todo.screens.main_screen import TodoScreen
 from python_todo.screens.login_screen import LoginScreen
 from python_todo.modals.add_todo_modal import AddTodoModal
-from python_todo.screens.help_screen import HelpScreen
 
 class TodoApp(App):
     """A Textual todo app."""
@@ -34,7 +33,6 @@ class TodoApp(App):
     MODES = {
             'login': LoginScreen,
             'home': TodoScreen,
-            'help': HelpScreen,
             }
     user: reactive[Optional[TodoUserRead]] = reactive(None)
     todos: reactive[list[TodoRead]] = reactive([], layout=True, always_update=True)
@@ -52,9 +50,6 @@ class TodoApp(App):
             Binding("c", "completed_todo", "Completed", key_display='c'),
             Binding("d", "delete_todo", "Delete", key_display='d'),
             Binding("v", "todo_detail", "View", key_display='v'),
-            Binding("h", "switch_mode('help')", "help", key_display='h'),
-            Binding("?", "switch_mode('help')", "help", key_display='?',
-                    show=False),
             Binding('u', 'change_username', 'Change username', key_display='u'),
             Binding('p', 'change_password', 'Change password', key_display='p'),
             Binding("l", "todo_logout", "Logout", key_display="l"),
