@@ -1,14 +1,13 @@
 """Todo app security module."""
-from passlib.context import CryptContext  # type: ignore
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")  # type: ignore
+from passlib.hash import pbkdf2_sha256
 
 
 def verify_password(plain_password, hashed_password):
     """Verify user password."""
-    return pwd_context.verify(plain_password, hashed_password)
+    return pbkdf2_sha256.verify(plain_password, hashed_password)
 
 
 def get_password_hash(plain_password: str):
     """Hash user password."""
-    return pwd_context.hash(plain_password)
+    return pbkdf2_sha256.hash(plain_password)

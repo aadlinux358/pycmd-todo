@@ -19,11 +19,11 @@ packages = [
 pytodo = "app:main"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.12"
 textual = "^0.37.1"
 sqlalchemy = "^2.0.21"
 pydantic = "^2.3.0"
-passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+passlib = "^1.7.4"
 
 
 [tool.poetry.group.dev.dependencies]
